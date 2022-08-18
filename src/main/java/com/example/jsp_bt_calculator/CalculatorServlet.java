@@ -14,7 +14,7 @@ public class CalculatorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Float first = Float.parseFloat(req.getParameter("first"));
         Float second = Float.parseFloat(req.getParameter("second"));
-        char operator = req.getParameter("Operator").charAt(0);
+        String operator = req.getParameter("Operator");
 
         PrintWriter writer = resp.getWriter();
 
@@ -29,15 +29,15 @@ public class CalculatorServlet extends HttpServlet {
         writer.println("</html>");
     }
 
-    public float calculate(float first, float second, char operator){
+    public float calculate(float first, float second, String operator){
         switch (operator){
-            case '+':
+            case "+":
                 return first + second;
-            case '-':
+            case "-":
                 return first - second;
-            case '*':
+            case "*":
                 return first * second;
-            case '/':
+            case "/":
                 if(second != 0)
                     return first / second;
                 else
